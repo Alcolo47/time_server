@@ -1,4 +1,4 @@
-FROM python:3 as compil
+FROM python:3-alpine as compil
 
 COPY src/requirements.txt /SRC/requirements.txt
 RUN python -m pip install -r /SRC/requirements.txt
@@ -7,7 +7,7 @@ COPY src/ /SRC/
 RUN python -m pip install /SRC/
 
 
-FROM python:3
+FROM python:3-alpine
 COPY --from=compil /usr/local/bin /usr/local/bin
 COPY --from=compil /usr/local/lib /usr/local/lib
 
