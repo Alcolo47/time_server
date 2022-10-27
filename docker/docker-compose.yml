@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  time_server:
+    image: "${REPOSITORY_URL}/time_server"
+    build:
+      context: ..
+      dockerfile: ${PWD}/Dockerfile
+
+    ports:
+      - "${PORT}:${PORT}"
+
+    environment:
+      PORT: ${PORT}
